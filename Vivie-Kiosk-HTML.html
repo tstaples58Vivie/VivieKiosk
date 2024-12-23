@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk Navigation Page</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0f676e; /* Teal background */
+            color: white;
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background-color: #f4f4f4; /* Light gray background for the logo */
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 10px 0 0;
+            font-size: 2rem;
+            color: #0f676e; /* Teal text for branding consistency */
+        }
+
+        header img {
+            max-width: 250px;
+            height: auto;
+        }
+
+        #clock {
+            font-size: 1.2rem;
+            color: #0f676e; /* Teal color for the clock */
+            margin-top: 10px;
+        }
+
+        /* Google Search Bar */
+        .search-bar {
+            margin: 20px 0;
+        }
+
+        .search-bar input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #1d8a91;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #105456;
+        }
+
+        /* Buttons Section */
+        .link-container {
+            margin: 20px;
+        }
+
+        .link-container a {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #1d8a91; /* Button text color */
+            background-color: #f4f4f4; /* Button background color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .link-container a:hover {
+            background-color: #e8f4f3;
+        }
+
+        .link-container i {
+            font-size: 2rem;
+            color: #1d8a91;
+            margin-right: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            margin: 20px;
+        }
+
+        .faq-container h2 {
+            font-size: 1.5rem;
+        }
+
+        .faq-container button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #1d8a91;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .faq-container button:hover {
+            background-color: #105456;
+        }
+
+        .faq-container div {
+            display: none;
+            margin: 10px 20px;
+            font-size: 1rem;
+            color: #f4f4f4;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            padding: 20px;
+            font-size: 0.9rem;
+            background-color: #1d8a91;
+        }
+
+        footer a {
+            color: #f4f4f4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="vivie-logo.svg" alt="Brand Logo">
+        <h1>Welcome to the Kiosk Page</h1>
+        <!-- Clock and Date -->
+        <div id="clock"></div>
+    </header>
+    <main>
+        <!-- Google Search Bar -->
+        <div class="search-bar">
+            <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="text" name="q" placeholder="Search Google...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="link-container">
+            <a href="https://walkermethodist.training.reliaslearning.com/" target="_blank">
+                <i class="fas fa-book"></i> Relias Training
+            </a>
+            <a href="https://vivie.ukg.net/" target="_blank">
+                <i class="fas fa-user"></i> UKG
+            </a>
+            <a href="https://outlook.office365.com/" target="_blank">
+                <i class="fas fa-envelope"></i> Outlook Online
+            </a>
+            <a href="https://login.pointclickcare.com" target="_blank">
+                <i class="fas fa-hospital"></i> Point Click Care
+            </a>
+            <a href="https://vivie.org/" target="_blank">
+                <i class="fas fa-globe"></i> Vivie.org
+            </a>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            <button onclick="toggleFAQ('faq1')">What is Point Click Care?</button>
+            <div id="faq1">Point Click Care is a cloud-based platform for long-term care management.</div>
+            
+            <button onclick="toggleFAQ('faq2')">How do I access Relias Training?</button>
+            <div id="faq2">Click the Relias Training link above to access training resources.</div>
+            
+            <button onclick="toggleFAQ('faq3')">How do I contact IT support?</button>
+            <div id="faq3">You can contact IT support at: 320-762-4300.</div>
+
+            <button onclick="toggleFAQ('faq4')">How do I print?</button>
+            <div id="faq4">To print on a kiosk computer, please press the CTRL + P keys on your keyboard at the same time to open the printing page. Proceed with printing to any of the printers available on the computer.</div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Vivie</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to toggle FAQ answers
+        function toggleFAQ(id) {
+            const faq = document.getElementById(id);
+            faq.style.display = faq.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Function to update clock and date in Central Standard Time
+        function updateClock() {
+            const now = new Date();
+            const options = { 
+                timeZone: 'America/Chicago', // CST/Chicago timezone
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                weekday: 'long', 
+                month: 'long', 
+                day: 'numeric', 
+                year: 'numeric' 
+            };
+
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const formattedDateTime = formatter.formatToParts(now).reduce((acc, part) => {
+                if (part.type !== 'literal') acc[part.type] = part.value;
+                return acc;
+            }, {});
+
+            const date = `${formattedDateTime.weekday}, ${formattedDateTime.month} ${formattedDateTime.day}, ${formattedDateTime.year}`;
+            const time = `${formattedDateTime.hour}:${formattedDateTime.minute}:${formattedDateTime.second} ${formattedDateTime.dayPeriod}`;
+            document.getElementById('clock').innerHTML = `${date} | ${time}`;
+        }
+
+        setInterval(updateClock, 1000); // Update every second
+        updateClock(); // Initialize clock immediately
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>
