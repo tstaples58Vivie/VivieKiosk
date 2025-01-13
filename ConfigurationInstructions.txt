@@ -1,0 +1,4 @@
+Place the "Vivie-Kiosk-HTMLPage" folder onto the base of the C: drive. 
+
+Once done, setup kiosk mode and use edge. Then when asked for an URL, use the following:
+file:///C:/Vivie-Kiosk-HTMLPage/Vivie-Kiosk-HTML.html
