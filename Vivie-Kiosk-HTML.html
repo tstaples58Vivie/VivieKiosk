@@ -68,12 +68,20 @@
         .link-container {
             margin: 20px auto;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .button-row {
+            display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 15px;
         }
 
-        .link-container a, .link-container .dropdown button {
+        .button-row a,
+        .button-row .dropdown button {
             display: inline-flex;
             align-items: center;
             text-decoration: none;
@@ -88,11 +96,12 @@
             gap: 8px;
         }
 
-        .link-container a:hover, .link-container .dropdown button:hover {
+        .button-row a:hover,
+        .button-row .dropdown button:hover {
             background-color: #e8f4f3;
         }
 
-        .link-container i {
+        .button-row i {
             font-size: 1.5rem;
             color: #1d8a91;
         }
@@ -193,31 +202,41 @@
         </div>
 
         <div class="link-container">
-            <a href="https://outlook.office365.com/" target="_blank">
-                <i class="fas fa-envelope"></i> Outlook Online
-            </a>
-            <a href="https://portal.palatium.care/" target="_blank">
-                <i class="fas fa-cogs"></i> PalCare
-            </a>
-            <a href="https://login.pointclickcare.com" target="_blank">
-                <i class="fas fa-hospital"></i> Point Click Care
-            </a>
-            <a href="https://walkermethodist.training.reliaslearning.com/" target="_blank">
-                <i class="fas fa-book"></i> Relias Training
-            </a>
-            <a href="https://vivie.ukg.net/" target="_blank">
-                <i class="fas fa-user"></i> UKG
-            </a>
-            <a href="https://vivie.org/" target="_blank">
-                <i class="fas fa-globe"></i> Vivie.org
-            </a>
-            <div class="dropdown">
-                <button><i class="fas fa-tools"></i> Worxhub</button>
-                <div class="dropdown-content">
-                    <a href="https://kn-carecenter.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">AC/CC Worxhub</a>
-                    <a href="https://kn-crystalbrook.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">CB Worxhub</a>
-                    <a href="https://kn-grandarbor.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">GA Worxhub</a>
-                    <a href="https://kn-nelsongables.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">NG Worxhub</a>
+            <!-- Row 1: Communication Tools -->
+            <div class="button-row">
+                <a href="https://teams.microsoft.com/" target="_blank">
+                    <i class="fas fa-comments"></i> Teams
+                </a>
+                <a href="https://outlook.office365.com/" target="_blank">
+                    <i class="fas fa-envelope"></i> Outlook Online
+                </a>
+            </div>
+
+            <!-- Row 2: Remaining Links -->
+            <div class="button-row">
+                <a href="https://portal.palatium.care/" target="_blank">
+                    <i class="fas fa-cogs"></i> PalCare
+                </a>
+                <a href="https://login.pointclickcare.com" target="_blank">
+                    <i class="fas fa-hospital"></i> Point Click Care
+                </a>
+                <a href="https://walkermethodist.training.reliaslearning.com/" target="_blank">
+                    <i class="fas fa-book"></i> Relias Training
+                </a>
+                <a href="https://vivie.ukg.net/" target="_blank">
+                    <i class="fas fa-user"></i> UKG
+                </a>
+                <a href="https://vivie.org/" target="_blank">
+                    <i class="fas fa-globe"></i> Vivie.org
+                </a>
+                <div class="dropdown">
+                    <button><i class="fas fa-tools"></i> Worxhub</button>
+                    <div class="dropdown-content">
+                        <a href="https://kn-carecenter.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">AC/CC Worxhub</a>
+                        <a href="https://kn-crystalbrook.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">CB Worxhub</a>
+                        <a href="https://kn-grandarbor.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">GA Worxhub</a>
+                        <a href="https://kn-nelsongables.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">NG Worxhub</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -238,7 +257,7 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2025 Vivie</p>
+        <p>&copy; 2026 Vivie</p>
     </footer>
     <script>
         function toggleFAQ(id) {
