@@ -4,178 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiosk Navigation Page</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        /* General styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0f676e;
-            color: white;
-            text-align: center;
-        }
-
-        header {
-            background-color: #f4f4f4;
-            padding: 20px 0;
-        }
-
-        header h1 {
-            margin: 10px 0 0;
-            font-size: 2rem;
-            color: #0f676e;
-        }
-
-        header img {
-            max-width: 250px;
-            height: auto;
-        }
-
-        #clock {
-            font-size: 1.2rem;
-            color: #0f676e;
-            margin-top: 10px;
-        }
-
-        .search-bar {
-            margin: 20px 0;
-        }
-
-        .search-bar input[type="text"] {
-            width: 300px;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .search-bar button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            background-color: #1d8a91;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .search-bar button:hover {
-            background-color: #105456;
-        }
-
-        .link-container {
-            margin: 20px auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .link-container a, .link-container .dropdown button {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            color: #1d8a91;
-            background-color: #f4f4f4;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            gap: 8px;
-        }
-
-        .link-container a:hover, .link-container .dropdown button:hover {
-            background-color: #e8f4f3;
-        }
-
-        .link-container i {
-            font-size: 1.5rem;
-            color: #1d8a91;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f4f4f4;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: #1d8a91;
-            text-decoration: none;
-            display: block;
-            padding: 10px 20px;
-            white-space: nowrap;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #e8f4f3;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .faq-container {
-            margin: 20px auto;
-            max-width: 600px;
-        }
-
-        .faq-container h2 {
-            font-size: 1.5rem;
-        }
-
-        .faq-container button {
-            display: block;
-            margin: 10px auto;
-            padding: 10px 20px;
-            font-size: 1rem;
-            background-color: #1d8a91;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .faq-container button:hover {
-            background-color: #105456;
-        }
-
-        .faq-container div {
-            display: none;
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #f4f4f4;
-            color: #0f676e;
-            border-radius: 5px;
-        }
-
-        footer {
-            margin-top: 20px;
-            padding: 20px;
-            font-size: 0.9rem;
-            background-color: #1d8a91;
-        }
-
-        footer a {
-            color: #f4f4f4;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
+        body {font-family: Arial, sans-serif;margin: 0;padding: 0;background-color: #0f676e;color: white;text-align: center;}
+        header {background-color: #f4f4f4;padding: 20px 0;}
+        header h1 {margin: 10px 0 0;font-size: 2rem;color: #0f676e;}
+        header img {max-width: 250px;height: auto;}
+        #clock {font-size: 1.2rem;color: #0f676e;margin-top: 10px;}
+        .search-bar {margin: 20px 0;}
+        .search-bar input[type="text"] {width: 300px;padding: 10px;font-size: 1rem;border: 1px solid #ddd;border-radius: 5px;}
+        .search-bar button {padding: 10px 20px;font-size: 1rem;background-color: #1d8a91;color: white;border: none;border-radius: 5px;cursor: pointer;}
+        .search-bar button:hover {background-color: #105456;}
+        .link-container {margin: 20px auto;display: flex;flex-direction: column;align-items: center;gap: 20px;}
+        .button-row {display: flex;justify-content: center;flex-wrap: wrap;gap: 15px;}
+        .button-row a,.button-row .dropdown button {display: inline-flex;align-items: center;text-decoration: none;font-size: 1.2rem;color: #1d8a91;background-color: #f4f4f4;border: none;padding: 10px 20px;border-radius: 5px;cursor: pointer;transition: all 0.3s ease;gap: 8px;}
+        .button-row a:hover,.button-row .dropdown button:hover {background-color: #e8f4f3;}
+        .button-row i {font-size: 1.5rem;color: #1d8a91;}
+        .dropdown {position: relative;}
+        .dropdown-content {display: none;position: absolute;background-color: #f4f4f4;min-width: 200px;box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);z-index: 1;}
+        .dropdown-content a {color: #1d8a91;text-decoration: none;display: block;padding: 10px 20px;white-space: nowrap;}
+        .dropdown-content a:hover {background-color: #e8f4f3;}
+        .dropdown:hover .dropdown-content {display: block;}
+        .faq-container {margin: 20px auto;max-width: 600px;}
+        .faq-container h2 {font-size: 1.5rem;}
+        .faq-container button {display: block;margin: 15px auto;padding: 10px 20px;font-size: 1rem;background-color: #1d8a91;color: white;border: none;border-radius: 5px;cursor: pointer;width: 100%;}
+        .faq-container button:hover {background-color: #105456;}
+        .faq-container div {display: none;margin: 0 0 15px 0;padding: 10px;background-color: #f4f4f4;color: #0f676e;border-radius: 5px;}
+        footer {margin-top: 20px;padding: 20px;font-size: 0.9rem;background-color: #1d8a91;}
+        footer a {color: #f4f4f4;text-decoration: none;}
+        footer a:hover {text-decoration: underline;}
     </style>
 </head>
 <body>
@@ -193,34 +50,25 @@
         </div>
 
         <div class="link-container">
-            <a href="https://app.emenuchoice.com/login/" target="_blank">
-                <i class="fas fa-utensils"></i> EMenu
-            </a>
-            <a href="https://outlook.office365.com/" target="_blank">
-                <i class="fas fa-envelope"></i> Outlook Online
-            </a>
-            <a href="https://portal.palatium.care/" target="_blank">
-                <i class="fas fa-cogs"></i> PalCare
-            </a>
-            <a href="https://login.pointclickcare.com" target="_blank">
-                <i class="fas fa-hospital"></i> Point Click Care
-            </a>
-            <a href="https://walkermethodist.training.reliaslearning.com/" target="_blank">
-                <i class="fas fa-book"></i> Relias Training
-            </a>
-            <a href="https://vivie.ukg.net/" target="_blank">
-                <i class="fas fa-user"></i> UKG
-            </a>
-            <a href="https://vivie.org/" target="_blank">
-                <i class="fas fa-globe"></i> Vivie.org
-            </a>
-            <div class="dropdown">
-                <button><i class="fas fa-tools"></i> Worxhub</button>
-                <div class="dropdown-content">
-                    <a href="https://kn-carecenter.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">AC/CC Worxhub</a>
-                    <a href="https://kn-crystalbrook.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">CB Worxhub</a>
-                    <a href="https://kn-grandarbor.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">GA Worxhub</a>
-                    <a href="https://kn-nelsongables.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">NG Worxhub</a>
+            <div class="button-row">
+                <a href="https://teams.microsoft.com/" target="_blank"><i class="fas fa-comments"></i> Teams</a>
+                <a href="https://outlook.office365.com/" target="_blank"><i class="fas fa-envelope"></i> Outlook Online</a>
+                <a href="https://vivieteam.sharepoint.com/sites/VivieHome" target="_blank"><i class="fas fa-home"></i> Vivie Vine</a>
+            </div>
+            <div class="button-row">
+                <a href="https://portal.palatium.care/" target="_blank"><i class="fas fa-cogs"></i> PalCare</a>
+                <a href="https://login.pointclickcare.com" target="_blank"><i class="fas fa-hospital"></i> Point Click Care</a>
+                <a href="https://walkermethodist.training.reliaslearning.com/" target="_blank"><i class="fas fa-book"></i> Relias Training</a>
+                <a href="https://vivie.ukg.net/" target="_blank"><i class="fas fa-user"></i> UKG</a>
+                <a href="https://vivie.org/" target="_blank"><i class="fas fa-globe"></i> Vivie.org</a>
+                <div class="dropdown">
+                    <button><i class="fas fa-tools"></i> Worxhub</button>
+                    <div class="dropdown-content">
+                        <a href="https://kn-carecenter.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">AC/CC Worxhub</a>
+                        <a href="https://kn-crystalbrook.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">CB Worxhub</a>
+                        <a href="https://kn-grandarbor.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">GA Worxhub</a>
+                        <a href="https://kn-nelsongables.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">NG Worxhub</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -229,38 +77,34 @@
             <h2>Frequently Asked Questions</h2>
             <button onclick="toggleFAQ('faq1')">What is Point Click Care?</button>
             <div id="faq1">Point Click Care is a cloud-based platform for long-term care management.</div>
-            
+
             <button onclick="toggleFAQ('faq2')">How do I access Relias Training?</button>
             <div id="faq2">Click the Relias Training link above to access training resources.</div>
-            
+
             <button onclick="toggleFAQ('faq3')">How do I contact IT support?</button>
             <div id="faq3">You can contact IT support at: 320-762-4300.</div>
 
             <button onclick="toggleFAQ('faq4')">How do I print?</button>
-            <div id="faq4">To print on a kiosk computer, please press the CTRL + P keys on your keyboard at the same time to open the printing page. Proceed with printing to any of the printers available on the computer.</div>
+            <div id="faq4">To print on a kiosk computer, press CTRL + P at the same time to open the print window. Choose your printer and click Print.</div>
+
+            <button onclick="toggleFAQ('faq5')">The Kiosk page isn’t loading or looks frozen. What do I do?</button>
+            <div id="faq5">If the page stops responding, click the End Session button in the top right and it'll restart the page. If it still doesn’t work, attempt restarting the computer.</div>  
+
+            <button onclick="toggleFAQ('faq6')">How do I join a Teams meeting?</button>
+            <div id="faq6">Click the <strong>Teams</strong> button above. When the Teams web page opens, find and click your meeting link or open your calendar within Teams to join the meeting.</div>
+
+            <button onclick="toggleFAQ('faq7')">What is the Vivie Vine?</button>
+            <div id="faq7">The Vivie Vine is an employee resource where you can find news, forms, updates for department-specific and Vivie resources.</div>
         </div>
     </main>
     <footer>
-        <p>&copy; 2025 Vivie</p>
+        <p>&copy; 2026 Vivie</p>
     </footer>
     <script>
-        function toggleFAQ(id) {
-            const faq = document.getElementById(id);
-            faq.style.display = faq.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function updateClock() {
-            const now = new Date();
-            const options = { timeZone: 'America/Chicago', hour: '2-digit', minute: '2-digit', second: '2-digit', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-            const formatter = new Intl.DateTimeFormat('en-US', options);
-            const formatted = formatter.format(now);
-            document.getElementById('clock').innerHTML = formatted;
-        }
-
-        setInterval(updateClock, 1000);
-        updateClock();
+        function toggleFAQ(id){const faq=document.getElementById(id);faq.style.display=faq.style.display==='none'?'block':'none';}
+        function updateClock(){const now=new Date();const options={timeZone:'America/Chicago',hour:'2-digit',minute:'2-digit',second:'2-digit',weekday:'long',month:'long',day:'numeric',year:'numeric'};const formatter=new Intl.DateTimeFormat('en-US',options);document.getElementById('clock').innerHTML=formatter.format(now);}
+        setInterval(updateClock,1000);updateClock();
     </script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </body>
 </html>
