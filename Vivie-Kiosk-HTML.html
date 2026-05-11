@@ -1,110 +1,850 @@
+<!-- Vivie Kiosk v2.0 | 2026-05-08 | Unified -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiosk Navigation Page</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Vivie Kiosk</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        body {font-family: Arial, sans-serif;margin: 0;padding: 0;background-color: #0f676e;color: white;text-align: center;}
-        header {background-color: #f4f4f4;padding: 20px 0;}
-        header h1 {margin: 10px 0 0;font-size: 2rem;color: #0f676e;}
-        header img {max-width: 250px;height: auto;}
-        #clock {font-size: 1.2rem;color: #0f676e;margin-top: 10px;}
-        .search-bar {margin: 20px 0;}
-        .search-bar input[type="text"] {width: 300px;padding: 10px;font-size: 1rem;border: 1px solid #ddd;border-radius: 5px;}
-        .search-bar button {padding: 10px 20px;font-size: 1rem;background-color: #1d8a91;color: white;border: none;border-radius: 5px;cursor: pointer;}
-        .search-bar button:hover {background-color: #105456;}
-        .link-container {margin: 20px auto;display: flex;flex-direction: column;align-items: center;gap: 20px;}
-        .button-row {display: flex;justify-content: center;flex-wrap: wrap;gap: 15px;}
-        .button-row a,.button-row .dropdown button {display: inline-flex;align-items: center;text-decoration: none;font-size: 1.2rem;color: #1d8a91;background-color: #f4f4f4;border: none;padding: 10px 20px;border-radius: 5px;cursor: pointer;transition: all 0.3s ease;gap: 8px;}
-        .button-row a:hover,.button-row .dropdown button:hover {background-color: #e8f4f3;}
-        .button-row i {font-size: 1.5rem;color: #1d8a91;}
-        .dropdown {position: relative;}
-        .dropdown-content {display: none;position: absolute;background-color: #f4f4f4;min-width: 200px;box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);z-index: 1;}
-        .dropdown-content a {color: #1d8a91;text-decoration: none;display: block;padding: 10px 20px;white-space: nowrap;}
-        .dropdown-content a:hover {background-color: #e8f4f3;}
-        .dropdown:hover .dropdown-content {display: block;}
-        .faq-container {margin: 20px auto;max-width: 600px;}
-        .faq-container h2 {font-size: 1.5rem;}
-        .faq-container button {display: block;margin: 15px auto;padding: 10px 20px;font-size: 1rem;background-color: #1d8a91;color: white;border: none;border-radius: 5px;cursor: pointer;width: 100%;}
-        .faq-container button:hover {background-color: #105456;}
-        .faq-container div {display: none;margin: 0 0 15px 0;padding: 10px;background-color: #f4f4f4;color: #0f676e;border-radius: 5px;}
-        footer {margin-top: 20px;padding: 20px;font-size: 0.9rem;background-color: #1d8a91;}
-        footer a {color: #f4f4f4;text-decoration: none;}
-        footer a:hover {text-decoration: underline;}
+        /* ============================================
+           Vivie Kiosk v2.0 – Unified
+           Last updated: 2026-05-08
+           ============================================ */
+
+        /* ---------- Theme Variables ---------- */
+        :root {
+            --bg-color: #1a2332;
+            --text-color: #f4f4f4;
+            --heading-color: #ffffff;
+            --clock-color: #b0c4d8;
+            --section-label-color: #7ea8c4;
+            --btn-bg: #1d8a91;
+            --btn-hover: #16727a;
+            --btn-text: #ffffff;
+            --faq-bg: rgba(255, 255, 255, 0.06);
+            --faq-hover: rgba(255, 255, 255, 0.05);
+            --faq-text: #ffffff;
+            --faq-answer-color: #c5d5e4;
+            --faq-link-color: #5ec4cc;
+            --footer-color: #6a8299;
+            --dropdown-text: #1a2332;
+            --dropdown-bg: #ffffff;
+            --dropdown-hover: #e0f5f5;
+            --search-bg: #ffffff;
+            --search-text: #222222;
+            --search-btn-bg: #1d8a91;
+            --toggle-bg: rgba(255, 255, 255, 0.08);
+            --toggle-hover: rgba(255, 255, 255, 0.16);
+            --toggle-color: #b0c4d8;
+            --toggle-border: rgba(255, 255, 255, 0.3);
+            --support-bg: #d35400;
+            --support-hover: #b84700;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f0f2f5;
+            --text-color: #2c3e50;
+            --heading-color: #1a2332;
+            --clock-color: #5a6a7a;
+            --section-label-color: #4a6a82;
+            --btn-bg: #1d8a91;
+            --btn-hover: #167078;
+            --btn-text: #ffffff;
+            --faq-bg: rgba(0, 0, 0, 0.04);
+            --faq-hover: rgba(0, 0, 0, 0.06);
+            --faq-text: #2c3e50;
+            --faq-answer-color: #4a5568;
+            --faq-link-color: #157a82;
+            --footer-color: #8a9aaa;
+            --dropdown-text: #1a2332;
+            --dropdown-bg: #ffffff;
+            --dropdown-hover: #e8f5f5;
+            --search-bg: #ffffff;
+            --search-text: #222222;
+            --search-btn-bg: #1d8a91;
+            --toggle-bg: rgba(0, 0, 0, 0.04);
+            --toggle-hover: rgba(0, 0, 0, 0.08);
+            --toggle-color: #4a6a82;
+            --toggle-border: rgba(0, 0, 0, 0.15);
+            --support-bg: #d35400;
+            --support-hover: #b84700;
+            --shadow-color: rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* ---------- Header / Logo ---------- */
+        .header {
+            text-align: center;
+            margin: 30px 0 6px;
+            position: relative;
+            width: 90%;
+            max-width: 860px;
+        }
+
+        .header img {
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            transition: color 0.3s;
+        }
+
+        /* ---------- Theme Toggle ---------- */
+        .theme-toggle {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border: 1px solid var(--toggle-border);
+            border-radius: 20px;
+            background-color: var(--toggle-bg);
+            color: var(--toggle-color);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.3s, border-color 0.3s;
+            white-space: nowrap;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--toggle-hover);
+        }
+
+        .theme-toggle:focus-visible {
+            outline: 2px solid var(--heading-color);
+            outline-offset: 2px;
+        }
+
+        .theme-toggle i {
+            font-size: 0.95rem;
+        }
+
+        /* ---------- Clock ---------- */
+        .clock {
+            font-size: 1.15rem;
+            margin: 6px 0 18px;
+            color: var(--clock-color);
+            transition: color 0.3s;
+        }
+
+        /* ---------- Search Bar ---------- */
+        .search-bar {
+            width: 90%;
+            max-width: 480px;
+            margin-bottom: 28px;
+        }
+
+        .search-bar form {
+            display: flex;
+        }
+
+        .search-bar input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 6px 0 0 6px;
+            font-size: 1rem;
+            outline: none;
+            background-color: var(--search-bg);
+            color: var(--search-text);
+        }
+
+        .search-bar input[type="text"]:focus-visible {
+            box-shadow: inset 0 0 0 2px #1d8a91;
+        }
+
+        .search-bar button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 0 6px 6px 0;
+            background-color: var(--search-btn-bg);
+            color: #ffffff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--btn-hover);
+        }
+
+        .search-bar button:focus-visible {
+            outline: 2px solid var(--heading-color);
+            outline-offset: 2px;
+        }
+
+        /* ---------- Button Sections ---------- */
+        .button-section {
+            width: 90%;
+            max-width: 860px;
+            margin-bottom: 12px;
+        }
+
+        .button-section h2 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--section-label-color);
+            margin-bottom: 10px;
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .button-grid a,
+        .button-grid .dropdown {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 185px;
+            padding: 14px 22px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px var(--shadow-color);
+            transition: background-color 0.2s, transform 0.15s;
+            cursor: pointer;
+        }
+
+        .button-grid a:hover,
+        .button-grid .dropdown:hover {
+            background-color: var(--btn-hover);
+            transform: translateY(-2px);
+        }
+
+        .button-grid a:focus-visible,
+        .button-grid .dropdown:focus-visible {
+            outline: 2px solid var(--heading-color);
+            outline-offset: 3px;
+        }
+
+        .button-grid a i,
+        .button-grid .dropdown i {
+            font-size: 1.1rem;
+        }
+
+        /* ---------- IT Support Button (accent) ---------- */
+        .button-grid a.btn-support {
+            background-color: var(--support-bg);
+        }
+
+        .button-grid a.btn-support:hover {
+            background-color: var(--support-hover);
+        }
+
+        /* ---------- Worxhub Dropdown ---------- */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dropdown-bg);
+            min-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            z-index: 100;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            display: block;
+            min-width: unset;
+            width: 100%;
+            padding: 12px 18px;
+            color: var(--dropdown-text);
+            background-color: var(--dropdown-bg);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 0;
+            box-shadow: none;
+            text-align: left;
+            transition: background-color 0.15s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--dropdown-hover);
+            transform: none;
+        }
+
+        .dropdown-content a:focus-visible {
+            outline: 2px solid #1d8a91;
+            outline-offset: -2px;
+        }
+
+        .dropdown-container:hover .dropdown-content {
+            display: block;
+        }
+
+        /* ---------- FAQ Section ---------- */
+        .faq-section {
+            width: 90%;
+            max-width: 700px;
+            margin: 10px 0 30px;
+        }
+
+        .faq-section h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+            color: var(--heading-color);
+            transition: color 0.3s;
+        }
+
+        .faq-group-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--section-label-color);
+            margin: 18px 0 8px;
+            padding-left: 6px;
+            transition: color 0.3s;
+        }
+
+        .faq-item {
+            background-color: var(--faq-bg);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+
+        .faq-item details {
+            padding: 0;
+        }
+
+        .faq-item summary {
+            padding: 14px 18px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--faq-text);
+            transition: background-color 0.15s, color 0.3s;
+        }
+
+        .faq-item summary:hover {
+            background-color: var(--faq-hover);
+        }
+
+        .faq-item summary:focus-visible {
+            outline: 2px solid var(--heading-color);
+            outline-offset: -2px;
+        }
+
+        .faq-item summary::before {
+            content: "\f054";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.75rem;
+            transition: transform 0.2s;
+        }
+
+        .faq-item details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item .faq-answer {
+            padding: 0 18px 14px 42px;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--faq-answer-color);
+            transition: color 0.3s;
+        }
+
+        .faq-item .faq-answer a {
+            color: var(--faq-link-color);
+            text-decoration: underline;
+        }
+
+        .faq-item .faq-answer ol {
+            margin: 8px 0 8px 18px;
+        }
+
+        .faq-item .faq-answer ol li {
+            margin-bottom: 4px;
+        }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            margin-top: auto;
+            padding: 18px 0;
+            font-size: 0.85rem;
+            color: var(--footer-color);
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        /* ---------- Print Styles ---------- */
+        @media print {
+            body {
+                background-color: #ffffff;
+                color: #222222;
+            }
+
+            .header h1 {
+                color: #1a2332;
+            }
+
+            .theme-toggle {
+                display: none;
+            }
+
+            .clock {
+                color: #555555;
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+            .button-section h2,
+            .faq-group-label {
+                color: #333333;
+            }
+
+            .button-grid a,
+            .button-grid .dropdown {
+                background-color: #ffffff;
+                color: #1a2332;
+                border: 1px solid #1a2332;
+                box-shadow: none;
+            }
+
+            .button-grid a.btn-support {
+                border-color: #d35400;
+                color: #d35400;
+                background-color: #ffffff;
+            }
+
+            .dropdown-content {
+                display: none !important;
+            }
+
+            .faq-section {
+                display: none;
+            }
+
+            .footer {
+                color: #888888;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <img src="vivie-logo.svg" alt="Brand Logo">
-        <h1>Welcome to the Kiosk Page</h1>
-        <div id="clock"></div>
-    </header>
-    <main>
-        <div class="search-bar">
-            <form action="https://www.google.com/search" method="get" target="_blank">
-                <input type="text" name="q" placeholder="Search Google...">
-                <button type="submit">Search</button>
-            </form>
-        </div>
 
-        <div class="link-container">
-            <div class="button-row">
-                <a href="https://teams.microsoft.com/" target="_blank"><i class="fas fa-comments"></i> Teams</a>
-                <a href="https://outlook.office365.com/" target="_blank"><i class="fas fa-envelope"></i> Outlook Online</a>
-                <a href="https://vivieteam.sharepoint.com/sites/VivieHome" target="_blank"><i class="fas fa-home"></i> Vivie Vine</a>
-            </div>
-            <div class="button-row">
-                <a href="https://portal.palatium.care/" target="_blank"><i class="fas fa-cogs"></i> PalCare</a>
-                <a href="https://login.pointclickcare.com" target="_blank"><i class="fas fa-hospital"></i> Point Click Care</a>
-                <a href="https://walkermethodist.training.reliaslearning.com/" target="_blank"><i class="fas fa-book"></i> Relias Training</a>
-                <a href="https://vivie.ukg.net/" target="_blank"><i class="fas fa-user"></i> UKG</a>
-                <a href="https://vivie.org/" target="_blank"><i class="fas fa-globe"></i> Vivie.org</a>
+    <!-- Header -->
+    <div class="header">
+        <img src="vivie-logo.svg" alt="Vivie Logo">
+        <h1>Welcome to Vivie</h1>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Switch to light mode">
+            <i class="fas fa-sun"></i>
+            <span>Light Mode</span>
+        </button>
+    </div>
+
+    <!-- Clock -->
+    <div class="clock" id="clock"></div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <form action="https://www.google.com/search" method="GET" target="_blank">
+            <input type="text" name="q" placeholder="Search Google..." aria-label="Search Google">
+            <button type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+    </div>
+
+    <!-- ===== Communication & Daily Tools ===== -->
+    <div class="button-section">
+        <h2>Communication &amp; Daily Tools</h2>
+        <div class="button-grid">
+            <a href="https://teams.microsoft.com/" target="_blank">
+                <i class="fas fa-comments"></i> Teams
+            </a>
+            <a href="https://vivieteam.sharepoint.com/sites/VivieHome" target="_blank">
+                <i class="fas fa-leaf"></i> Vivie Vine
+            </a>
+            <a href="https://vivie.ukg.net/" target="_blank">
+                <i class="fas fa-clock"></i> UKG
+            </a>
+            <a href="https://vivie.org/" target="_blank">
+                <i class="fas fa-globe"></i> Vivie.org
+            </a>
+            <a href="https://forms.office.com/r/ZHMX5YaPrz" target="_blank" class="btn-support">
+                <i class="fas fa-headset"></i> IT Support Form
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== Clinical & Training ===== -->
+    <div class="button-section">
+        <h2>Clinical &amp; Training</h2>
+        <div class="button-grid">
+            <a href="https://login.pointclickcare.com" target="_blank">
+                <i class="fas fa-hospital"></i> Point Click Care
+            </a>
+            <a href="https://www30.pointclickcare.com/poc/userLogin.xhtml" target="_blank">
+                <i class="fas fa-clipboard-list"></i> PCC Point of Care
+            </a>
+            <a href="https://portal.palatium.care/" target="_blank">
+                <i class="fas fa-hand-holding-heart"></i> PalCare
+            </a>
+            <a href="https://walkermethodist.training.reliaslearning.com/" target="_blank">
+                <i class="fas fa-graduation-cap"></i> Relias Training
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== Facilities ===== -->
+    <div class="button-section">
+        <h2>Facilities</h2>
+        <div class="button-grid">
+            <div class="dropdown-container">
                 <div class="dropdown">
-                    <button><i class="fas fa-tools"></i> Worxhub</button>
-                    <div class="dropdown-content">
-                        <a href="https://kn-carecenter.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">AC/CC Worxhub</a>
-                        <a href="https://kn-crystalbrook.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">CB Worxhub</a>
-                        <a href="https://kn-grandarbor.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">GA Worxhub</a>
-                        <a href="https://kn-nelsongables.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">NG Worxhub</a>
-                    </div>
+                    <i class="fas fa-building"></i> Worxhub <i class="fas fa-caret-down"></i>
+                </div>
+                <div class="dropdown-content">
+                    <a href="https://kn-carecenter.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">AC/CC Worxhub</a>
+                    <a href="https://kn-crystalbrook.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">CB Worxhub</a>
+                    <a href="https://kn-grandarbor.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">GA Worxhub</a>
+                    <a href="https://kn-nelsongables.theworxhub.com/Global/Login/Show?ReturnUrl=/" target="_blank">NG Worxhub</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="faq-container">
-            <h2>Frequently Asked Questions</h2>
-            <button onclick="toggleFAQ('faq1')">What is Point Click Care?</button>
-            <div id="faq1">Point Click Care is a cloud-based platform for long-term care management.</div>
+    <!-- ===== FAQ Section ===== -->
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
 
-            <button onclick="toggleFAQ('faq2')">How do I access Relias Training?</button>
-            <div id="faq2">Click the Relias Training link above to access training resources.</div>
+        <!-- Getting Started -->
+        <div class="faq-group-label">Getting Started</div>
 
-            <button onclick="toggleFAQ('faq3')">How do I contact IT support?</button>
-            <div id="faq3">You can contact IT support at: 320-762-4300.</div>
-
-            <button onclick="toggleFAQ('faq4')">How do I print?</button>
-            <div id="faq4">To print on a kiosk computer, press CTRL + P at the same time to open the print window. Choose your printer and click Print.</div>
-
-            <button onclick="toggleFAQ('faq5')">The Kiosk page isn’t loading or looks frozen. What do I do?</button>
-            <div id="faq5">If the page stops responding, click the End Session button in the top right and it'll restart the page. If it still doesn’t work, attempt restarting the computer.</div>  
-
-            <button onclick="toggleFAQ('faq6')">How do I join a Teams meeting?</button>
-            <div id="faq6">Click the <strong>Teams</strong> button above. When the Teams web page opens, find and click your meeting link or open your calendar within Teams to join the meeting.</div>
-
-            <button onclick="toggleFAQ('faq7')">What is the Vivie Vine?</button>
-            <div id="faq7">The Vivie Vine is an employee resource where you can find news, forms, updates for department-specific and Vivie resources.</div>
+        <div class="faq-item">
+            <details>
+                <summary>This is my first time using this kiosk. How do I get started?</summary>
+                <div class="faq-answer">
+                    <ol>
+                        <li>Click the <strong>Teams</strong> button above.</li>
+                        <li>Sign in with your Vivie credentials (<em>firstname.lastname@vivie.org</em>).</li>
+                        <li>Enter the initial password provided by your manager or IT during onboarding.</li>
+                        <li>You will be prompted to change your password and set up the <strong>Microsoft Authenticator</strong> app on your phone.</li>
+                        <li>If you get stuck, submit an <a href="https://forms.office.com/r/ZHMX5YaPrz" target="_blank">IT Support Form</a> or call <strong>(320) 762-4300</strong>.</li>
+                    </ol>
+                    For a detailed walkthrough with screenshots, ask your manager for the
+                    <strong>Vivie Account Setup Guide</strong>.
+                </div>
+            </details>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2026 Vivie</p>
-    </footer>
+
+        <div class="faq-item">
+            <details>
+                <summary>Where is Outlook / email?</summary>
+                <div class="faq-answer">
+                    As part of a recent update, email is no longer available on kiosk
+                    computers. For messaging, use <strong>Microsoft Teams</strong> by
+                    clicking the Teams button above. If you need to reach someone
+                    urgently, submit an
+                    <a href="https://forms.office.com/r/ZHMX5YaPrz" target="_blank">IT Support Form</a>
+                    or call <strong>(320) 762-4300</strong>.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>How do I reset my password?</summary>
+                <div class="faq-answer">
+                    You can reset your Vivie password at
+                    <a href="https://aka.ms/sspr" target="_blank">https://aka.ms/sspr</a>
+                    from any browser. If you are locked out, submit an
+                    <a href="https://forms.office.com/r/ZHMX5YaPrz" target="_blank">IT Support Form</a>
+                    or call <strong>(320) 762-4300</strong> for assistance.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>Can I save files on this kiosk?</summary>
+                <div class="faq-answer">
+                    No. Kiosk computers do not save files between sessions. Any files
+                    downloaded or created will be removed when the session ends. Use
+                    <strong>OneDrive</strong> or <strong>SharePoint</strong> through
+                    Teams to store files securely.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>How do I access Eldermark / Service Minder?</summary>
+                <div class="faq-answer">
+                    Eldermark is available via the <strong>Service Minder</strong>
+                    shortcut on the desktop. Press <strong>CTRL + ALT + DELETE</strong>
+                    on the kiosk and log in as yourself to access the desktop shortcut.
+                    If you don&#39;t see it, submit an
+                    <a href="https://forms.office.com/r/ZHMX5YaPrz" target="_blank">IT Support Form</a>
+                    or call <strong>(320) 762-4300</strong>.
+                </div>
+            </details>
+        </div>
+
+        <!-- Apps & Tools -->
+        <div class="faq-group-label">Apps &amp; Tools</div>
+
+        <div class="faq-item">
+            <details>
+                <summary>What is Point Click Care?</summary>
+                <div class="faq-answer">
+                    Point Click Care is a cloud-based platform for long-term care management.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>What is PCC Point of Care?</summary>
+                <div class="faq-answer">
+                    PCC Point of Care is a companion application to Point Click Care,
+                    designed for bedside documentation and real-time care tracking.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>What is UKG?</summary>
+                <div class="faq-answer">
+                    UKG is Vivie&#39;s timekeeping and scheduling platform. Use it to
+                    clock in/out, view your schedule, request time off, and check your
+                    pay stubs.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>What is PalCare?</summary>
+                <div class="faq-answer">
+                    PalCare (Palatium Care) is a care management platform used for
+                    resident documentation and care coordination.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>What is Worxhub?</summary>
+                <div class="faq-answer">
+                    Worxhub is a facilities management tool used to submit and track
+                    maintenance work orders. Select your facility from the
+                    <strong>Worxhub</strong> dropdown above to get started.
+                </div>
+            </details>
+        </div>
+
+        <!-- How-To -->
+        <div class="faq-group-label">How-To</div>
+
+        <div class="faq-item">
+            <details>
+                <summary>How do I access Microsoft Teams?</summary>
+                <div class="faq-answer">
+                    Click the <strong>Teams</strong> button above. Sign in with your
+                    Vivie credentials (<em>firstname.lastname@vivie.org</em>). You will
+                    be prompted for multi-factor authentication on each kiosk session.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>How do I join a Teams meeting?</summary>
+                <div class="faq-answer">
+                    Click the <strong>Teams</strong> button above. When the Teams web
+                    page opens, find and click your meeting link or open your calendar
+                    within Teams to join the meeting.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>How do I access The Vine?</summary>
+                <div class="faq-answer">
+                    Click the <strong>Vivie Vine</strong> button above. The Vine is
+                    Vivie&#39;s employee intranet on SharePoint, where you can find
+                    company news, tools, and resources.<br><br>
+                    New to The Vine? Visit the
+                    <a href="https://vivieteam.sharepoint.com/SitePages/Vine-Tour---Navigation.aspx" target="_blank">Vine Training Hub</a>
+                    for guided video walkthroughs on navigating hubs, communication
+                    standards, and using Teams channels.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>How do I access Relias Training?</summary>
+                <div class="faq-answer">
+                    Click the <strong>Relias Training</strong> button above to access
+                    training resources.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>How do I print from this kiosk?</summary>
+                <div class="faq-answer">
+                    Press <strong>CTRL + P</strong> on your keyboard to open the print
+                    dialog. You can then select any printer available on this computer.
+                </div>
+            </details>
+        </div>
+
+        <!-- Troubleshooting -->
+        <div class="faq-group-label">Troubleshooting</div>
+
+        <div class="faq-item">
+            <details>
+                <summary>The Kiosk page isn&#39;t loading or looks frozen. What do I do?</summary>
+                <div class="faq-answer">
+                    If the page stops responding, click the <strong>End Session</strong>
+                    button in the top right and it will restart the page. If it still
+                    doesn&#39;t work, try restarting the computer.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>How do I contact IT support?</summary>
+                <div class="faq-answer">
+                    Need help? Submit a request using the
+                    <a href="https://forms.office.com/r/ZHMX5YaPrz" target="_blank">IT Support Form</a>
+                    button above, or
+                    <a href="https://forms.office.com/r/ZHMX5YaPrz" target="_blank">click here</a>.
+                    For urgent issues, call <strong>(320) 762-4300</strong>.
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2026 Vivie &middot; v2.0
+    </div>
+
+    <!-- Scripts -->
     <script>
-        function toggleFAQ(id){const faq=document.getElementById(id);faq.style.display=faq.style.display==='none'?'block':'none';}
-        function updateClock(){const now=new Date();const options={timeZone:'America/Chicago',hour:'2-digit',minute:'2-digit',second:'2-digit',weekday:'long',month:'long',day:'numeric',year:'numeric'};const formatter=new Intl.DateTimeFormat('en-US',options);document.getElementById('clock').innerHTML=formatter.format(now);}
-        setInterval(updateClock,1000);updateClock();
+        /* ---------- Clock (Central Time) ---------- */
+        function updateClock() {
+            var now = new Date();
+            var options = {
+                timeZone: 'America/Chicago',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('clock').textContent =
+                now.toLocaleString('en-US', options);
+        }
+        updateClock();
+        setInterval(updateClock, 30000);
+
+        /* ---------- Theme Toggle ---------- */
+        (function () {
+            var toggle = document.getElementById('themeToggle');
+            var icon = toggle.querySelector('i');
+            var label = toggle.querySelector('span');
+            var saved = sessionStorage.getItem('vivie-kiosk-theme');
+
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    icon.className = 'fas fa-moon';
+                    label.textContent = 'Dark Mode';
+                    toggle.setAttribute('aria-label', 'Switch to dark mode');
+                    toggle.setAttribute('title', 'Switch to dark mode');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                    icon.className = 'fas fa-sun';
+                    label.textContent = 'Light Mode';
+                    toggle.setAttribute('aria-label', 'Switch to light mode');
+                    toggle.setAttribute('title', 'Switch to light mode');
+                }
+                sessionStorage.setItem('vivie-kiosk-theme', theme);
+            }
+
+            if (saved) { applyTheme(saved); }
+
+            toggle.addEventListener('click', function () {
+                var current = document.documentElement.getAttribute('data-theme');
+                applyTheme(current === 'light' ? 'dark' : 'light');
+            });
+        })();
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </body>
 </html>
