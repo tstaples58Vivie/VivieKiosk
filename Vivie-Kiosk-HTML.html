@@ -1,4 +1,4 @@
-<!-- Vivie Kiosk v2.1 | 2026-05-18 | Unified -->
+<!-- Vivie Kiosk v2.2 | 2026-09-30 | August Health and accessible Workxhub menu -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* ============================================
-           Vivie Kiosk v2.1 – Unified
-           Last updated: 2026-05-18
+           Vivie Kiosk v2.2 – Unified
+           Last updated: 2026-09-30
            ============================================ */
 
         /* ---------- Theme Variables ---------- */
@@ -278,6 +278,22 @@
             display: inline-block;
         }
 
+        summary.dropdown {
+            list-style: none;
+        }
+
+        summary.dropdown::-webkit-details-marker {
+            display: none;
+        }
+
+        .dropdown-container > summary .fa-caret-down {
+            transition: transform 0.2s;
+        }
+
+        .dropdown-container[open] > summary .fa-caret-down {
+            transform: rotate(180deg);
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -319,7 +335,7 @@
             outline-offset: -2px;
         }
 
-        .dropdown-container:hover .dropdown-content {
+        .dropdown-container[open] .dropdown-content {
             display: block;
         }
 
@@ -536,6 +552,9 @@
     <div class="button-section">
         <h2>Clinical &amp; Training</h2>
         <div class="button-grid">
+            <a href="https://app.augusthealth.com/" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-heart-pulse"></i> August Health
+            </a>
             <a href="https://login.pointclickcare.com" target="_blank">
                 <i class="fas fa-hospital"></i> Point Click Care
             </a>
@@ -558,10 +577,10 @@
     <div class="button-section">
         <h2>Facilities</h2>
         <div class="button-grid">
-            <div class="dropdown-container">
-                <div class="dropdown">
-                    <i class="fas fa-building"></i> Worxhub <i class="fas fa-caret-down"></i>
-                </div>
+            <details class="dropdown-container">
+                <summary class="dropdown">
+                    <i class="fas fa-building" aria-hidden="true"></i> Worxhub <i class="fas fa-caret-down" aria-hidden="true"></i>
+                </summary>
                 <div class="dropdown-content">
                     <a href="https://crystalbrookbyvivie.theworxhub.com/" target="_blank">Crystal Brook</a>
                     <a href="https://grandarborbyvivie.theworxhub.com/" target="_blank">Grand Arbor</a>
@@ -576,7 +595,7 @@
                     <a href="https://walkerplacebyvivie.theworxhub.com/" target="_blank">Walker Place</a>
                     <a href="https://westwoodridgebyvivie.theworxhub.com/" target="_blank">Westwood Ridge</a>
                 </div>
-            </div>
+            </details>
         </div>
     </div>
 
@@ -665,6 +684,16 @@
                 <summary>What is Point Click Care?</summary>
                 <div class="faq-answer">
                     Point Click Care is a cloud-based platform for long-term care management.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>What is August Health?</summary>
+                <div class="faq-answer">
+                    August Health is Vivie&#39;s new EHR platform. Click the
+                    <strong>August Health</strong> button above to open it.
                 </div>
             </details>
         </div>
@@ -812,7 +841,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        &copy; 2026 Vivie &middot; v2.1
+        &copy; 2026 Vivie &middot; v2.2
     </div>
 
     <!-- Scripts -->
